@@ -321,6 +321,15 @@ bool Lobby::GameConnection::createOrModifyChar( FFXIVARR_PACKET_RAW& packet, uin
     std::string charDetails( ( char* ) &packet.data[ 0 ] + 0x4C );
     Logger::info( "[{0}] Type 2: {1}", m_pSession->getAccountID(), charDetails );
 
+    //Replace all lalas with male hrothgar because that is INFINITELY better for the world
+    uint64_t race = charDetails.find("content", 0) + 12;
+    if (charDetails[race] == '3')
+    {
+      charDetails[race] = '7'; //change race to Hrothgar
+      charDetails[race + 4] = '0'; //and set to male regardless, 'cause SE are cowards
+      Logger::info("REPLACED LALA: {0}", charDetails);
+    }
+
     if( g_restConnector.createCharacter( ( char* ) m_pSession->getSessionId(), m_pSession->newCharName, charDetails ) !=
         -1 )
     {
