@@ -518,9 +518,9 @@ void Sapphire::Entity::Player::deleteItemDb( Sapphire::ItemPtr item ) const
   db.directExecute( stmt );
 }
 
-
 bool Sapphire::Entity::Player::isObtainable( uint32_t catalogId, uint8_t quantity )
 {
+  if (catalogId == 30100) return false; //No laladiles in MY town.
 
   return true;
 }
