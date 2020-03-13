@@ -291,7 +291,7 @@ namespace Sapphire::Network::Packets
     CFCommenceHandler = 0x006F,
 
 
-    CFRegisterDuty = 0x0071,
+    CFRegisterDuty = 0xFF71, // 5.21; 0x0071 called as part of Examine from client
     CFRegisterRoulette = 0xFF72,
     PlayTimeHandler = 0x0276, // updated 5.1
     LogoutHandler = 0x0365, // updated 5.21
